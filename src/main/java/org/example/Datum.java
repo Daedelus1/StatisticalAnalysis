@@ -13,11 +13,12 @@ public record Datum(String bookTitle, String authorName, int pageCount, LocalDat
         String[] points = Arrays.stream(line.split(DELIMITER_REGEX)).map(string -> string.trim().toLowerCase())
                 .toArray(String[]::new);
         System.out.println(Arrays.toString(points));
-        return new Datum(points[0],
-                points[1],
+        return new Datum(points[0].toLowerCase(),
+                points[1].toLowerCase(),
                 Integer.parseInt(points[2], 10),
                 //YYYY MM DD
-                LocalDate.parse(points[3].replaceAll("\\.", ""), DateTimeFormatter.BASIC_ISO_DATE),
+                LocalDate.parse(Arrays.stream(points[3].split("\\.")).map(n -> n.length() == 1 ? "0" + n : n)
+                        .reduce((a, b) -> a + "." + b).get(), DateTimeFormatter.ofPattern("yyyy.MM.dd")),
                 new BigDecimal(points[4]));
     }
 }
