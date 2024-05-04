@@ -8,8 +8,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 
 public class DataParser {
-    private static final File DATA_TEXT_FILE = new File("C:\\Users\\ethan\\Documents\\GitHub\\" +
-            "StatisticalAnalysis\\src\\main\\java\\org\\example\\RawData.txt");
+    private static final File DATA_TEXT_FILE = new File("src/main/java/org/example/RawData.txt");
 
     static ImmutableSet<Datum> getData() {
         try {
