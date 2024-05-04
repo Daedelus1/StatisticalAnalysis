@@ -33,6 +33,10 @@ public class LinearRegression {
         return new TDistribution(data.size() - 2).cumulativeProbability(calcTValue(h0Beta));
     }
 
+    public double calcRSquaredValue() {
+        return 1 - (Math.pow((residualPlot.stream().mapToDouble(Point::y).sum() / data.stream().mapToDouble(point -> point.y() - this.yBar).sum()), 2));
+    }
+
     public boolean isLargeEnough() {
         return data.size() >= 30;
     }
