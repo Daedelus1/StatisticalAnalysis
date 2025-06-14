@@ -7,8 +7,6 @@ public class Main {
         System.out.println(new LinearRegression(DataParser.getData().stream().map(datum -> new Point(
                 datum.dateOfPublication().toEpochDay(),
                 datum.MSRP_USD().doubleValue() / datum.pageCount())).collect(ImmutableSet.toImmutableSet()))
-                .calcPValue(0));
-
-
+                .calcRSquaredValue());
     }
 }

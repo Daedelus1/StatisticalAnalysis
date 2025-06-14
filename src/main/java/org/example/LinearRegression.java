@@ -25,6 +25,22 @@ public class LinearRegression {
         this.betaSE = Math.sqrt(this.residualPlot.stream().mapToDouble(n -> n.y() * n.y()).sum() / (data.size() * (data.size()) - 2));
     }
 
+    public double getXBar() {
+        return xBar;
+    }
+
+    public double getYBar() {
+        return yBar;
+    }
+
+    public double getAlpha() {
+        return alpha;
+    }
+
+    public double getBeta() {
+        return beta;
+    }
+
     public double calcTValue(int h0Beta) {
         return (this.beta - h0Beta) / this.betaSE;
     }
